@@ -5,17 +5,13 @@
 	Operacion: 	<select name="action">
 			<option value="suma">Sumar</option>
 			<option value="resta">Restar</option>
-			<option value="multiplica">Multiplicar</option>
-			<option value="divide">Dividir</option>
-			
+			<option value="multiplicacion">Multiplicar</option>
+			<option value="division">Dividir</option>
 	</select>
-	
 		<input type="submit" value="Calcular" />
 </form>
 
-
  <?php
-	
 if (isset($_GET["action"])) {
 
 	require_once('lib/nusoap.php');
@@ -24,18 +20,8 @@ if (isset($_GET["action"])) {
 	$calculadora=array('x' => $_GET["a"],'y' => $_GET["b"], 'operacion' => $_GET["action"]);
 	$resultado = $cliente->call('calculadora',$calculadora);
 
-
-	echo  $cliente->responseData;
-
-	/*if($resultado == false){
-		print $cliente->error_str;
-		print $cliente->responseData;
-	 }
-*/
-
-
 	?>
-	<h1>DIVISION</h1>
+	<h1><?php echo strtoupper($_GET["action"]) ?></h1>
 	<table>
 			<tr>
 				<td>Primer numero:</td>
@@ -52,5 +38,4 @@ if (isset($_GET["action"])) {
 	</table>
 	<?php
 }
-
 ?>

@@ -9,6 +9,4 @@
 	#$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : 'error';
 	$server->service(file_get_contents("php://input"));
 
-	
-
 ?> 
